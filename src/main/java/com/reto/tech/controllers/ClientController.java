@@ -29,7 +29,7 @@ public class ClientController {
     }
 
     @GetMapping("/kpi")
-    public ResponseEntity<?> average() {
+    public ResponseEntity<?> clientKpi() {
         return ResponseEntity.ok(clientService.generateKpi());
     }
 }

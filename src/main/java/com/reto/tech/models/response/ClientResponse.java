@@ -6,7 +6,7 @@ public class ClientResponse implements Serializable {
     private String lastname;
     private Integer age;
     private String birthDate;
-    private String randomDate;
+    private String deceaseDate;
 
     public String getName() {
         return name;
@@ -40,11 +40,11 @@ public class ClientResponse implements Serializable {
         this.birthDate = birthDate;
     }
 
-    public String getRandomDate() {
-        return randomDate;
+    public String getDeceaseDate() {
+        return deceaseDate;
     }
 
-    public void setRandomDate(String randomDate) {
-        this.randomDate = randomDate;
+    public void setDeceaseDate(String deceaseDate) {
+        this.deceaseDate = deceaseDate;
     }
 }

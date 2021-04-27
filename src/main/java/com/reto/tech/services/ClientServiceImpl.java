@@ -47,7 +47,7 @@ public class ClientServiceImpl implements IClientService {
             cr.setLastname(i.getLastname());
             cr.setBirthDate(date);
             cr.setAge(i.getAge());
-            cr.setRandomDate(formatter.format(currentDatePlusOne));
+            cr.setDeceaseDate(formatter.format(currentDatePlusOne));
             response.add(cr);
         });
 
