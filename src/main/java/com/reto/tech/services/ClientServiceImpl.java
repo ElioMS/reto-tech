@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -81,14 +82,15 @@ public class ClientServiceImpl implements IClientService {
 
         ClientKPIResponse response = new ClientKPIResponse();
         response.setAverage(avg);
-        response.setSd(calculateStandardDeviation(avg));
+        response.setSd(Double.parseDouble(calculateStandardDeviation(avg)));
 
         return response;
     }
 
-    private Double calculateStandardDeviation(Integer avg) {
+    private String calculateStandardDeviation(Integer avg) {
         List<Integer> ages = clientRepository.getClientsAge();
         Integer size = ages.size();
+        DecimalFormat df2 = new DecimalFormat("#.####");
 
         Integer sum = ages.stream().map(i -> {
             Integer difference = i - avg;
@@ -96,7 +98,8 @@ public class ClientServiceImpl implements IClientService {
         }).collect(Collectors.summingInt(Integer::intValue));
 
         Integer div = sum / (size - 1);
-        return Math.sqrt(div);
+        Double ds = Math.sqrt(div);
+        return df2.format(ds);
     }
 
     private Date convertToDate(String stringDate) throws ParseException {
